@@ -1,15 +1,14 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bem-vindo ao Sistema SRQ-20</title>
-    
-    <!-- Carregar a tag estática -->
-    {% load static %}
 
-    <!-- Referência ao CSS com o {% static %} -->
+    <!-- Referência ao CSS com static -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
 </head>
 <body>
 
@@ -55,7 +54,8 @@
         <p>&copy; 2025 SRQ-20. Todos os direitos reservados.</p>
     </footer>
 
-    <!-- Referência ao JS com o {% static %} -->
-    <script src="{% static 'js/script.js' %}"></script>
+    <!-- Referência ao JS com static -->
+    <script src="{% static 'js/index.js' %}"></script>
+
 </body>
 </html>

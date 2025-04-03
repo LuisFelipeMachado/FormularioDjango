@@ -1,69 +1,56 @@
-document.addEventListener('DOMContentLoaded', function () {
-    // Função para enviar requisição e atualizar a interface com os dados
-    function fetchDashboardData() {
-        // Exemplo de como pegar o token JWT (caso esteja logado)
-        const token = localStorage.getItem('access_token');  // Armazenando o token no localStorage
+document.addEventListener('DOMContentLoaded', () => {
 
-        if (!token) {
-            alert('Você precisa estar logado!');
-            return;
-        }
+    // 🎯 Botão "Comece Agora"
+    const ctaButton = document.querySelector('.cta-button');
 
-        // Requisição para pegar as métricas do dashboard
-        fetch('/api/srq20/relatorio/geral/', {
-            method: 'GET',
-            headers: {
-                'Authorization': `Bearer ${token}`,
-                'Content-Type': 'application/json',
+    if (ctaButton) {
+        // Hover com animação suave
+        ctaButton.addEventListener('mouseover', () => {
+            ctaButton.style.transition = 'all 0.2s ease-in-out';
+            ctaButton.style.transform = 'scale(1.05)';
+            ctaButton.style.backgroundColor = '#6D28D9';
+        });
+
+        ctaButton.addEventListener('mouseout', () => {
+            ctaButton.style.transform = 'scale(1)';
+            ctaButton.style.backgroundColor = '#4C1D95';
+        });
+
+        // Verifica login ao clicar
+        ctaButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            const token = localStorage.getItem('access_token');
+
+            if (token) {
+                window.location.href = '/dashboard/';
+            } else {
+                window.location.href = '/login/';
             }
-        })
-        .then(response => response.json())
-        .then(data => {
-            updateDashboard(data);
-        })
-        .catch(error => {
-            console.error('Erro ao buscar os dados do dashboard:', error);
         });
     }
 
-    // Função para atualizar os valores no HTML
-    function updateDashboard(data) {
-        // Preencher os cards com os valores das métricas
-        document.querySelector('#total_respostas').textContent = data.total_respostas;
-        document.querySelector('#media_sim').textContent = data.media_respostas_sim;
-        document.querySelector('#casos_suspeitos').textContent = data.usuarios_com_potencial_transtorno;
-        document.querySelector('#percentual_risco').textContent = data.percentual_de_risco;
-    }
-
-    // Adicionar event listener no botão de aplicar filtros
-    document.querySelector('#filter-form').addEventListener('submit', function (event) {
-        event.preventDefault();
-
-        const dataInicio = document.querySelector('#data_inicio').value;
-        const dataFim = document.querySelector('#data_fim').value;
-
-        // Construindo a URL com os parâmetros de filtro
-        let url = '/api/srq20/relatorio/geral/?';
-        if (dataInicio) url += `data_inicio=${dataInicio}&`;
-        if (dataFim) url += `data_fim=${dataFim}`;
-
-        // Requisição para aplicar os filtros no relatório
-        fetch(url, {
-            method: 'GET',
-            headers: {
-                'Authorization': `Bearer ${token}`,
-                'Content-Type': 'application/json',
+    // 🔽 Scroll suave para seções internas
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+        link.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                window.scrollTo({
+                    top: target.offsetTop - 60,
+                    behavior: 'smooth'
+                });
             }
-        })
-        .then(response => response.json())
-        .then(data => {
-            updateDashboard(data);
-        })
-        .catch(error => {
-            console.error('Erro ao aplicar os filtros:', error);
         });
     });
 
-    // Carregar os dados quando a página for carregada
-    fetchDashboardData();
+    // 📬 Feedback do formulário de contato
+    const form = document.querySelector('form');
+
+    if (form) {
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Mensagem enviada com sucesso! Entraremos em contato em breve.');
+            form.reset();
+        });
+    }
 });

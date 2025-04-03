@@ -1,4 +1,6 @@
-from .views import index
+from .views import historico_view, metricas_view, relatorios_view
+from .views import index_view, dashboard, register_view
+from . import views
 from django.urls import path
 from .views import (
     RegisterView,
@@ -18,7 +20,8 @@ from rest_framework_simplejwt.views import (
 urlpatterns = [
 
     # Página inicial
-    path('', index, name='index'), 
+    path('', index_view, name='index'), 
+    path('dashboard/', views.dashboard, name='dashboard'),
 
     # 🔐 Autenticação
     path('register/', RegisterView.as_view(), name='register'),
@@ -37,4 +40,15 @@ urlpatterns = [
     path('srq20/relatorio/geral/', SRQ20RelatorioGeralView.as_view(), name='srq20-relatorio-geral'),
 
     path('dashboard/historico/', SRQ20HistoricoFiltradoView.as_view(), name='dashboard-historico'),
+
+
+    path('dashboard/historico/', historico_view, name='dashboard-historico'),
+    path('dashboard/metricas/', metricas_view, name='dashboard-metricas'),
+    path('dashboard/relatorios/', relatorios_view, name='dashboard-relatorios'),
+
+    # Rota para exibir o HTML bonitão
+    path('register/', register_view, name='register'),
+
+    # Rota da API que recebe os dados via POST
+    path('api/register/', RegisterView.as_view(), name='api-register'),
 ]

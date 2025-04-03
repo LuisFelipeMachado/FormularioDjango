@@ -12,8 +12,23 @@ from .serializers import SRQ20RespostaSerializer
 User = get_user_model()
 
 # Função index corretamente indentada
-def index(request):
+def index_view(request):
     return render(request, 'contas/index.html')
+
+def dashboard(request):
+    return render(request, 'contas/dashboard.html')
+
+def historico_view(request):
+    return render(request, 'contas/historico.html')
+
+def metricas_view(request):
+    return render(request, 'contas/metricas.html')
+
+def relatorios_view(request):
+    return render(request, 'contas/relatorios.html')
+
+def register_view(request):
+    return render(request, 'contas/register.html')
 
 # --------- REGISTRO ---------
 class RegisterView(APIView):
