@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bem-vindo ao Sistema SRQ-20</title>
+    
+    <!-- Carregar a tag estática -->
+    {% load static %}
+
+    <!-- Referência ao CSS com o {% static %} -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-logo">
+            <h2>SRQ-20</h2>
+        </div>
+        <div class="navbar-links">
+            <a href="#about">Sobre</a>
+            <a href="#contact">Contato</a>
+            <a href="{% url 'login' %}">Login</a>
+            <a href="{% url 'register' %}">Registrar</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Bem-vindo ao Sistema de Avaliação SRQ-20</h1>
+        <p>Avalie sua saúde mental com a metodologia SRQ-20</p>
+        <a href="{% url 'srq20-enviar' %}" class="cta-button">Comece Agora</a>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <h2>Sobre o SRQ-20</h2>
+        <p>O SRQ-20 é um questionário usado para avaliar possíveis transtornos mentais. Ele contém 20 questões e oferece uma análise das suas respostas. É amplamente utilizado em consultas médicas e psicológicas.</p>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <h2>Contato</h2>
+        <p>Para mais informações, entre em contato conosco:</p>
+        <form action="#" method="post">
+            <input type="text" name="name" placeholder="Seu nome" required>
+            <input type="email" name="email" placeholder="Seu e-mail" required>
+            <textarea name="message" placeholder="Sua mensagem" required></textarea>
+            <button type="submit">Enviar</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 SRQ-20. Todos os direitos reservados.</p>
+    </footer>
+
+    <!-- Referência ao JS com o {% static %} -->
+    <script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>

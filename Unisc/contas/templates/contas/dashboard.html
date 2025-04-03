@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - SRQ-20</title>
+    
+    {% load static %}
+
+    <!-- Carregar o CSS para o Dashboard -->
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+</head>
+<body>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="sidebar-logo">
+            <h2>SRQ-20</h2>
+        </div>
+        <div class="sidebar-menu">
+            <a href="{% url 'dashboard-historico' %}">Histórico</a>
+            <a href="#">Métricas</a>
+            <a href="#">Relatórios</a>
+            <a href="#">Configurações</a>
+            <a href="#">Sair</a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Header -->
+        <header class="dashboard-header">
+            <h1>Bem-vindo ao seu Dashboard</h1>
+            <p>Visualize seu progresso no questionário SRQ-20 e analise as métricas.</p>
+        </header>
+
+        <!-- Cards de Métricas -->
+        <div class="metrics-cards">
+            <div class="card">
+                <h3>Total de Respostas</h3>
+                <p>120</p>
+            </div>
+            <div class="card">
+                <h3>Média de Pontuação</h3>
+                <p>6.8</p>
+            </div>
+            <div class="card">
+                <h3>Casos Suspeitos</h3>
+                <p>10</p>
+            </div>
+            <div class="card">
+                <h3>Percentual de Risco</h3>
+                <p>8%</p>
+            </div>
+        </div>
+
+        <!-- Gráficos e Tabelas -->
+        <section class="charts">
+            <div class="chart-container">
+                <h2>Distribuição de Respostas</h2>
+                <!-- Placeholder para um gráfico de barras ou pizza -->
+                <div class="chart"></div>
+            </div>
+            <div class="table-container">
+                <h2>Histórico de Respostas</h2>
+                <!-- Placeholder para uma tabela de respostas -->
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Data</th>
+                            <th>Pontuação</th>
+                            <th>Interpretação</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>01/01/2025</td>
+                            <td>7</td>
+                            <td>Possível Transtorno Mental</td>
+                        </tr>
+                        <tr>
+                            <td>15/01/2025</td>
+                            <td>4</td>
+                            <td>Sem Indício de Transtorno</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Filtros -->
+        <section class="filters">
+            <h2>Filtros de Dados</h2>
+            <form action="#">
+                <label for="data_inicio">Data de Início:</label>
+                <input type="date" id="data_inicio" name="data_inicio">
+                <label for="data_fim">Data de Fim:</label>
+                <input type="date" id="data_fim" name="data_fim">
+                <button type="submit">Aplicar Filtros</button>
+            </form>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 SRQ-20. Todos os direitos reservados.</p>
+    </footer>
+
+    <!-- JS para animações (caso precise de animações) -->
+    <script src="{% static 'js/dashboard.js' %}"></script>
+</body>
+</html>

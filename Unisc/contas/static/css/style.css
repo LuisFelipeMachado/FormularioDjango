@@ -1,0 +1,191 @@
+/* Reseta alguns estilos padrões para garantir consistência */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background-color: #007bff; /* Azul para o fundo */
+    color: white;
+    font-size: 1.2rem;
+}
+
+.navbar-logo h2 {
+    margin: 0;
+    font-weight: bold;
+    font-size: 1.8rem;
+}
+
+.navbar-links a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.navbar-links a:hover {
+    color: #ffcc00; /* Cor de destaque ao passar o mouse */
+}
+
+/* Hero Section */
+.hero {
+    background: url("{% static 'images/hero-bg.jpg' %}") no-repeat center center/cover; /* Imagem de fundo */
+    text-align: center;
+    color: white;
+    padding: 100px 20px; /* Espaçamento generoso */
+    background-size: cover; /* Garante que a imagem ocupe toda a área */
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+}
+
+.cta-button {
+    background-color: #28a745; /* Cor verde para o botão */
+    color: white;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: #218838; /* Cor mais escura no hover */
+}
+
+/* About Section */
+.about {
+    padding: 50px 20px;
+    background-color: #f8f9fa; /* Fundo claro */
+    text-align: center;
+}
+
+.about h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.about p {
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* Contact Section */
+.contact {
+    padding: 50px 20px;
+    text-align: center;
+    background-color: #f1f1f1; /* Fundo claro para contato */
+}
+
+.contact h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.contact p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+.contact form {
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.contact input, .contact textarea {
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.contact input:focus, .contact textarea:focus {
+    border-color: #007bff; /* Cor de foco azul */
+}
+
+.contact button {
+    background-color: #007bff;
+    color: white;
+    padding: 15px;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+.contact button:hover {
+    background-color: #0056b3; /* Cor de hover mais escura */
+}
+
+/* Footer */
+footer {
+    background-color: #f1f1f1;
+    padding: 20px;
+    text-align: center;
+}
+
+footer p {
+    font-size: 1rem;
+    color: #333;
+}
+
+/* Responsividade: */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .navbar-links {
+        margin-top: 20px;
+    }
+
+    .navbar-links a {
+        margin-left: 0;
+        margin-top: 10px;
+    }
+
+    .hero {
+        padding: 80px 20px;
+    }
+
+    .about, .contact {
+        padding: 30px 20px;
+    }
+    
+    .cta-button {
+        padding: 12px 24px;
+        font-size: 1rem;
+    }
+
+    .contact input, .contact textarea {
+        font-size: 0.9rem;
+    }
+
+    .contact button {
+        font-size: 1rem;
+        padding: 12px 20px;
+    }
+}
